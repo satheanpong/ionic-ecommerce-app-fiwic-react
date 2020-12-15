@@ -27,6 +27,7 @@ import './theme/variables.css';
 
 import './App.scss'
 import SignupPage from './pages/signup/SignupPage';
+import ItemDetailsPage from './pages/item-details/ItemDetailsPage';
 
 const App: React.FC = () => (
   <IonApp>
@@ -36,6 +37,7 @@ const App: React.FC = () => (
         <Route path="/welcome" component={WelcomePage} exact={true} />
         <Route path="/login" component={LoginPage} exact={true} />
         <Route path="/signup" component={SignupPage} exact={true} />
+        <Route path="/item-details" component={ItemDetailsPage} exact={true} />
         <Route exact path="/" render={() => <Redirect to="/login" />} />
       </IonRouterOutlet>
     </IonReactRouter>

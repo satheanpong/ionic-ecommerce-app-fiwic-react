@@ -17,13 +17,14 @@ import { funnelOutline, notificationsOutline } from "ionicons/icons";
 import "./Home.scss";
 
 import DataService, { ICategory, IProduct } from "../dataservice";
+import { useHistory } from "react-router-dom";
 
 const Home: React.FC = () => {
   const categories = DataService.getCategories();
   const featuredProducts = DataService.getFeaturedProducts();
   const bestSellProducts = DataService.getBestSellProducts();
 
-  //[options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }"
+  const history = useHistory()
 
   return (
     <IonPage id="home-page">
@@ -63,7 +64,7 @@ const Home: React.FC = () => {
           >
             {categories.map((category: ICategory) => {
               return (
-                <IonSlide key={"category" + category.id}>
+                <IonSlide key={"category" + category.id} >
                   <IonCol>
                     <h4>{category.name}</h4>
                     <img alt="img" src={category.image} />
@@ -85,7 +86,7 @@ const Home: React.FC = () => {
           >
             {featuredProducts.map((product: IProduct) => {
               return (
-                <IonSlide key={"product" + product.id}>
+                <IonSlide key={"product" + product.id} onClick={()=> history.push("/item-details")}>
                   <IonCol className="ion-text-left">
                     <img alt="img" src={product.image} />
                     <p>${product.price}</p>
@@ -107,7 +108,7 @@ const Home: React.FC = () => {
           >
             {bestSellProducts.map((product: IProduct) => {
               return (
-                <IonSlide key={"product" + product.id}>
+                <IonSlide key={"product" + product.id} onClick={()=> history.push("/item-details")}>
                   <IonCol className="ion-text-left">
                     <img alt="img" src={product.image} />
                     <p>${product.price}</p>
